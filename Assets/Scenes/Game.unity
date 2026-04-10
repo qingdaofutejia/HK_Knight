@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 390679775}
   - component: {fileID: 390679774}
   - component: {fileID: 390679773}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Stone beetle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
