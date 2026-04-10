@@ -1,0 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Player
+{
+    //»ÀŒÔ Ù–‘
+    public float playerSpeed = 3f;
+    public float playerJumpHeight = 5f;
+    public float playerHp = 100;
+}
