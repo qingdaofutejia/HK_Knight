@@ -6,7 +6,8 @@ public class IdleState : PlayerStateBase
 {
     public override void Enter(PlayerController player)
     {
-       player.animator.Play("Idle");
+        player.animator.SetFloat("Speed", 0f);
+        player.animator.Play("Idle");
     }
 
     public override void Exit(PlayerController player)
@@ -32,6 +33,11 @@ public class IdleState : PlayerStateBase
         if(Input.GetKeyDown(KeyCode.J) && !player.isAttack)
         {
             player.ChangeState(new AttackState());
+        }
+        //³å´Ì
+        if(Input.GetKeyDown(KeyCode.L) && !player.isAttack)
+        {
+            player.ChangeState(new DashState());
         }
     }
 }

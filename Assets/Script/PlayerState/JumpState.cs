@@ -34,7 +34,11 @@ public class JumpState : PlayerStateBase
             player.ChangeState(new AttackState());
             return;
         }
-
+        //³å´Ì
+        if (Input.GetKeyDown(KeyCode.L) && !player.isAttack)
+        {
+            player.ChangeState(new DashState());
+        }
         // ÂäµØºóÇÐ»Ø
         if (Isgrounded&&player.IsGrounded())
         {

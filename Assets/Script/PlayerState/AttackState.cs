@@ -18,11 +18,17 @@ public class AttackState : PlayerStateBase
         if (v > 0.5f)
         {
             player.animator.SetTrigger("Attack_Up");
+            // ÉÔÎ¢¼õÂıÏÂÂä
+            player.rb.velocity = Vector2.zero;
+            player.AttackUp();
         }
         // ÏòÏÂ¹¥»÷
         else if (v < -0.5f)
         {
             player.animator.SetTrigger("Attack_Down");
+            // ÉÔÎ¢¼õÂıÏÂÂä
+            player.rb.velocity = Vector2.zero;
+            player.AttackDown();
         }
         else
         {
@@ -36,6 +42,7 @@ public class AttackState : PlayerStateBase
             {
                 player.animator.SetTrigger("Attack_Left");
             }
+            player.Attack();
         }
     }
 

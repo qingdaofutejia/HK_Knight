@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RunState : PlayerStateBase
@@ -42,6 +43,11 @@ public class RunState : PlayerStateBase
         if (Input.GetKeyDown(KeyCode.J) && !player.isAttack)
         {
             player.ChangeState(new AttackState());
+        }
+        //³å´Ì
+        if (Input.GetKeyDown(KeyCode.L) && !player.isAttack)
+        {
+            player.ChangeState(new DashState());
         }
     }
 }

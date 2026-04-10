@@ -1,54 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerController : MonoBehaviour
 {
 
-    //ÈËÎïÊôĞÔ
-    Player player = new Player();
+    //äººç‰©å±æ€§
+    public Player player = new Player();
 
+    //äººç‰©æœå‘
+    public Vector2 direction = Vector2.left;
 
-    //¶¯»­¿ØÖÆÆ÷
+    //åŠ¨ç”»æ§åˆ¶å™¨
     public Animator animator;
 
-    //Åö×²Ìå
+    //ç¢°æ’ä½“
     public Rigidbody2D rb;
 
-    //ÊÇ·ñÔÚµØÉÏ
+    //æ˜¯å¦åœ¨åœ°ä¸Š
     private bool isGrounded = false;
 
-    //¹¥»÷¼ä¸ô
+    //æ”»å‡»é—´éš”
     public bool isAttack = false;
 
-    //µ±Ç°×´Ì¬
+    //å½“å‰çŠ¶æ€
     private PlayerStateBase currentState;
 
-    //¹¥»÷ÌØĞ§
+    //æ”»å‡»ç‰¹æ•ˆ
     public GameObject attackEffectUp;
     public GameObject attackEffectDown;
     public GameObject attackEffect;
+    //å†²åˆºç‰¹æ•ˆ
+    public GameObject dashEffect;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        attackEffectUp = Resources.Load<GameObject>("Attack_Eff/Attack_Up");
-        attackEffectDown = Resources.Load<GameObject>("Attack_Eff/Attack_Down");
-        attackEffect = Resources.Load<GameObject>("Attack_Eff/Attack");
+        attackEffectUp = Resources.Load<GameObject>("Eff/Attack_Up");
+        attackEffectDown = Resources.Load<GameObject>("Eff/Attack_Down");
+        attackEffect = Resources.Load<GameObject>("Eff/Attack");
+        dashEffect= Resources.Load<GameObject>("Eff/DashEff");
 
         animator = this.GetComponent<Animator>();
         if(animator == null)
         {
-            Debug.Log("Ã»ÓĞÕÒµ½Animator×é¼ş");
+            Debug.Log("æ²¡æœ‰æ‰¾åˆ°Animatorç»„ä»¶");
         }
         rb=this.GetComponent<Rigidbody2D>();
         if(rb == null)
         {
-            Debug.Log("Ã»ÓĞÕÒµ½Rigidbody2D×é¼ş");
+            Debug.Log("æ²¡æœ‰æ‰¾åˆ°Rigidbody2Dç»„ä»¶");
         }
-        //³õÊ¼Îª´ı»ú¶¯»­
+        //åˆå§‹ä¸ºå¾…æœºåŠ¨ç”»
         ChangeState(new IdleState());
     }
 
@@ -56,30 +63,44 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         currentState?.Update(this);
+        CheckDirection();
     }
     
-    //¸Ä±ä×´Ì¬
+    //æ”¹å˜çŠ¶æ€
     public void ChangeState(PlayerStateBase newState)
     {
-        //ÍË³öµ±Ç°×´Ì¬
+        //é€€å‡ºå½“å‰çŠ¶æ€
         currentState?.Exit(this);
-        //ÉèÖÃĞÂ×´Ì¬
+        //è®¾ç½®æ–°çŠ¶æ€
         currentState = newState;
-        //½øÈëĞÂ×´Ì¬
+        //è¿›å…¥æ–°çŠ¶æ€
         currentState.Enter(this);
     }
+    //åˆ¤æ–­æœå‘
+    private void CheckDirection()
+    {
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            direction = Vector2.right;
+        }
+        else if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            direction = Vector2.left;
+        }
+    }
 
-    //ÒÆ¶¯
+
+    //ç§»åŠ¨
     public void Move(float dir)
     {
         rb.velocity = new Vector2(dir * player.playerSpeed, rb.velocity.y);
     }
-    //ÌøÔ¾
+    //è·³è·ƒ
     public void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, player.playerJumpHeight);
     }
-    //ÊÇ·ñÔÚµØÃæ
+    //æ˜¯å¦åœ¨åœ°é¢
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isGrounded = true;
@@ -94,37 +115,117 @@ public class PlayerController : MonoBehaviour
         return isGrounded;
     }
 
-    //¹¥»÷ÌØĞ§Ö¡ÊÂ¼ş
-    //ÏòÉÏ¹¥»÷
+    //æ”»å‡»
+    public void Attack()
+    {
+       
+        float distance = player.playerRange;
+
+        Vector2 origin = (Vector2)transform.position + direction * distance * 0.5f;
+
+        Collider2D[] hits = Physics2D.OverlapBoxAll(
+            origin,
+            new Vector2(distance, 1f), // å®½ = æ”»å‡»è·ç¦»
+            0f,
+            LayerMask.GetMask("Enemy")
+        );
+
+        foreach (var hit in hits)
+        {
+            Debug.Log("æ‰“åˆ°æ•Œäºº: " + hit.name);
+            hit.GetComponent<MonsterController>().BeAttacked(this);
+        }
+    }
+    public void AttackDown()
+    {
+        float range = player.playerRange;
+
+        Vector2 center = (Vector2)transform.position + Vector2.down * range * 0.5f;
+
+        Collider2D[] hits = Physics2D.OverlapBoxAll(
+            center,
+            new Vector2(1f, range), // ç«–ç€çš„æ”»å‡»èŒƒå›´
+            0f,
+            LayerMask.GetMask("Enemy")
+        );
+
+        foreach (var hit in hits)
+        {
+            Debug.Log("ä¸‹åŠˆå‘½ä¸­: " + hit.name);
+            hit.GetComponent<MonsterController>().BeAttacked(this);
+        }
+    }
     public void AttackUp()
+    {
+        float range = player.playerRange;
+
+        Vector2 center = (Vector2)transform.position + Vector2.up * range * 0.5f;
+
+        Collider2D[] hits = Physics2D.OverlapBoxAll(
+            center,
+            new Vector2(1f, range), // ç«–ç€çš„æ”»å‡»èŒƒå›´
+            0f,
+            LayerMask.GetMask("Enemy")
+        );
+
+        foreach (var hit in hits)
+        {
+            Debug.Log("ä¸ŠåŠˆå‘½ä¸­: " + hit.name);
+            hit.GetComponent<MonsterController>().BeAttacked(this);
+        }
+    }
+
+    //æ”»å‡»ç‰¹æ•ˆå¸§äº‹ä»¶
+    //å‘ä¸Šæ”»å‡»
+    public void AttackUpEff()
     {
         GameObject effect = Instantiate(attackEffectUp, transform.position + new Vector3(0, 1.5f, 0), Quaternion.identity);
         StartCoroutine(DestroyAttackEffect(effect, 0.15f));
     }
-    //ÏòÏÂ¹¥»÷
-    public void AttackDown()
+    //å‘ä¸‹æ”»å‡»
+    public void AttackDownEff()
     {
         GameObject effect = Instantiate(attackEffectDown, transform.position + new Vector3(0, -1.5f, 0), Quaternion.identity);
         StartCoroutine(DestroyAttackEffect(effect, 0.15f));
     }
-    //ÆÕÍ¨¹¥»÷
-    public void Attack()
+    //æ™®é€šæ”»å‡»
+    public void AttackEff()
     {
         GameObject effect = Instantiate(attackEffect);
-        //³¯ÓÒ
-        if (transform.localScale.x < 0)
+        //æœå³
+        if (direction==Vector2.right)
         {
             effect.transform.localScale=new Vector3(-1,1,1);
             effect.transform.position=transform.position+new Vector3(1.5f,0f,0);
         }
-        //³¯×ó
-        else
+        //æœå·¦
+        else if (direction == Vector2.left)
         {
             effect.transform.position = transform.position + new Vector3(-1.5f, 0f, 0);
         }
         StartCoroutine(DestroyAttackEffect(effect, 0.15f));
     }
-    //Ïú»ÙÌØĞ§
+    //å†²åˆºç‰¹æ•ˆ
+    public void DashEff()
+    {
+        GameObject effect = Instantiate(dashEffect);
+        //æœå³
+        if (direction == Vector2.right)
+        {
+            effect.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        //æœå·¦
+        else if (direction == Vector2.left)
+        {
+            effect.transform.localScale = new Vector3(1, 1, 1);
+        }
+        effect.transform.SetParent(transform);
+        effect.transform.localPosition = Vector3.zero;
+        StartCoroutine(DestroyAttackEffect(effect, 0.3f));
+    }
+
+
+    //é”€æ¯ç‰¹æ•ˆ
     IEnumerator DestroyAttackEffect(GameObject effect,float timer)
     {
         yield return new WaitForSeconds(timer);
