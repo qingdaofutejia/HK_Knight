@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a3992fa974318fd4d936ae9f826b8c2c
+guid: f2cb8201c0e257d48a3d0cd52cbbb047
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,22 +93,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: select_game_HUD_Steel_Soul_0
+      name: Avatar_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2
-        width: 456
-        height: 174
+        y: 0
+        width: 172
+        height: 106
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 138, y: 0, z: 6, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 89, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81334d2c1b0898649b07be43b77599e5
-      internalID: -544580825
+      spriteID: f43267137bed8a945ac756efa11fec8c
+      internalID: -1541675625
       vertices: []
       indices: 
       edges: []
@@ -124,7 +124,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      select_game_HUD_Steel_Soul_0: -544580825
+      Avatar_0: -1541675625
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

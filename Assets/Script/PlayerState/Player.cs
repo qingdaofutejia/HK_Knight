@@ -5,9 +5,18 @@ using UnityEngine;
 public class Player
 {
     //ÈËÎïÊôĞÔ
-    public float playerSpeed = 4f;
-    public float playerJumpHeight = 6f;
-    public float playerHp = 100;
-    public float playerAttack = 20;
-    public float playerRange = 2f;
+    public float playerHp;
+    public float playerSpeed;
+    public float playerJumpHeight;
+    public float playerAttack;
+    public float playerRange;
+
+    public Player()
+    {
+        playerHp = 5;
+        playerSpeed = 4f;
+        playerJumpHeight = 6f;
+        playerAttack = 20f;
+        playerRange = 2f;
+    }
 }

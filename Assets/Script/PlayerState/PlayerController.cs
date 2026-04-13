@@ -174,6 +174,13 @@ public class PlayerController : MonoBehaviour
             hit.GetComponent<MonsterController>().BeAttacked(this);
         }
     }
+    /// <summary>
+    /// 被攻击
+    /// </summary>
+    public void BeAttack()
+    {
+        player.playerHp -= 1;
+    }
 
     //攻击特效帧事件
     //向上攻击

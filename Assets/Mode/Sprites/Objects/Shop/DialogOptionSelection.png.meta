@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -91,7 +91,469 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: DialogOptionSelection_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 611
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 071e44a453ebd484199ae5b256774963
+      internalID: -1328535819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_1
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 611
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b68d68e8a62bf8142ad8728d97df573c
+      internalID: -1365798530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_3
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 558
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e240a86f799ef7b40b4ceaaeba766bb6
+      internalID: 1938375410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_5
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 558
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26dbdba55d19a6c47996354c068d22c7
+      internalID: -1910323324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_8
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 491
+        width: 33
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcc23edc7cba95b4d8034f03c6b3b107
+      internalID: 889035763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_9
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 491
+        width: 33
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0306e70b8a8a1c40ae6cd25fd0a71a4
+      internalID: 1283913168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_10
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 428
+        width: 37
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d152f24e212dfb49ae02fa77ff59f8d
+      internalID: -365569096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_11
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 428
+        width: 37
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6ab90ce2ee57aa40be4e2f7b9e1c22b
+      internalID: -343509025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_12
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 370
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 586f950f1e35417499e5140103b47563
+      internalID: -1389714219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_13
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 370
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62c74ef53797de74192e767bdad40e3c
+      internalID: 403461733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_14
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 308
+        width: 45
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 812626b8e18c59541bd845e5f06422f6
+      internalID: 1470684508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_15
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 308
+        width: 45
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a8555575133f684dbbc7abf264b111c
+      internalID: 1817642471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_16
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 248
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a99b3a0f5ff6a94e9a5a0380b20a1dd
+      internalID: 2135378792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_17
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 248
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060bceeaceb92c64f9035e5b6b9be1a4
+      internalID: -824169455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_18
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 187
+        width: 51
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22c828aef12df884fb65adbb81468b1b
+      internalID: 648409310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_19
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 187
+        width: 51
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84e75c14794e89643b3df69fe2781730
+      internalID: -1997263314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_20
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 127
+        width: 50
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15dfbd845c515d343a9897dabe18a6f4
+      internalID: -700055436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_21
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 127
+        width: 50
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6b93e466e9767f499d0962262492ba8
+      internalID: 134297374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_22
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 67
+        width: 49
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 655689fca59b1c94faf71caea6743e69
+      internalID: 1602738485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_23
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 67
+        width: 49
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 124ddd9b604d97943adbc973eb4457e1
+      internalID: 1150284322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7
+        width: 50
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36a1fd46daaec5344aa7e353e86a9f39
+      internalID: -1526180544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DialogOptionSelection_25
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 7
+        width: 50
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 818cb0a8610b2b04da923de82dc48f56
+      internalID: 1139652333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -102,7 +564,33 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DialogOptionSelection_0: -1328535819
+      DialogOptionSelection_1: -1365798530
+      DialogOptionSelection_10: -365569096
+      DialogOptionSelection_11: -343509025
+      DialogOptionSelection_12: -1389714219
+      DialogOptionSelection_13: 403461733
+      DialogOptionSelection_14: 1470684508
+      DialogOptionSelection_15: 1817642471
+      DialogOptionSelection_16: 2135378792
+      DialogOptionSelection_17: -824169455
+      DialogOptionSelection_18: 648409310
+      DialogOptionSelection_19: -1997263314
+      DialogOptionSelection_2: -1481008768
+      DialogOptionSelection_20: -700055436
+      DialogOptionSelection_21: 134297374
+      DialogOptionSelection_22: 1602738485
+      DialogOptionSelection_23: 1150284322
+      DialogOptionSelection_24: -1526180544
+      DialogOptionSelection_25: 1139652333
+      DialogOptionSelection_3: 1938375410
+      DialogOptionSelection_4: -1904197128
+      DialogOptionSelection_5: -1910323324
+      DialogOptionSelection_6: -642067787
+      DialogOptionSelection_7: 355178473
+      DialogOptionSelection_8: 889035763
+      DialogOptionSelection_9: 1283913168
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
