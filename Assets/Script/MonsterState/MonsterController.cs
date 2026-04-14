@@ -5,6 +5,9 @@ using UnityEngine.Tilemaps;
 
 public class MonsterController : MonoBehaviour
 {
+    //怪物受击动画
+    GameObject hitEffect;
+
 
     //动画控制器
     public Animator animator;
@@ -32,6 +35,7 @@ public class MonsterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hitEffect = Resources.Load<GameObject>("Eff/MonsterHitEff");
         startPos = transform.position;
         animator = this.GetComponent<Animator>();
         sr= this.GetComponent<SpriteRenderer>();
@@ -93,7 +97,10 @@ public class MonsterController : MonoBehaviour
     //被攻击
     public void BeAttacked(PlayerController player)
     {
-        monster.monster_HP-=player.player.playerAttack;
+        GameObject eff=Instantiate(hitEffect, transform.position, Quaternion.identity);
+        StartCoroutine(DestroyEff(0.2f,eff));
+
+        monster.monster_HP-=GameDateMana.Instance.currentPlayer.playerAttack;
         StartCoroutine(HitFlash());
         BeRetreat(player.direction);
         if(monster.monster_HP<=0)
@@ -116,6 +123,11 @@ public class MonsterController : MonoBehaviour
     {
         yield return new WaitForSeconds(timer);
         Destroy(this.gameObject);
+    }
+    IEnumerator DestroyEff(float timer,GameObject eff)
+    {
+        yield return new WaitForSeconds(timer);
+        Destroy(eff);
     }
     /// <summary>
     ///受击反馈

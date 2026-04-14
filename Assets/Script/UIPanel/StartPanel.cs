@@ -71,8 +71,6 @@ public class StartPanel : MonoBehaviour
     private void OnclickLoginBtn()
     {
         //点击开始游戏,跳转到读档界面
-        //读取存储
-        FileSaveAndLoad.Instance.LoadPlayer();
         OnExit(() =>
         {
             ChoicePanel.Instance.OnEnter();
@@ -98,6 +96,7 @@ public class StartPanel : MonoBehaviour
                               .OnComplete(() =>
                               {
                                   cover.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                                  UIMana.Instance.currentState=UIState.Start;
                               });
                               
                           });
@@ -109,6 +108,7 @@ public class StartPanel : MonoBehaviour
     //打开界面
     public void OnEnter()
     {
+        UIMana.Instance.currentState = UIState.Start;
         Bg3.GetComponent<CanvasGroup>().DOFade(1f, 1.5f)
         .OnComplete(() =>
         {
@@ -126,10 +126,4 @@ public class StartPanel : MonoBehaviour
             onComplete?.Invoke(); //回调
         });
     }
-
-    IEnumerator Pause(float timer)
-    {
-        yield return new WaitForSeconds(timer);
-    }
-
 }

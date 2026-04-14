@@ -32,6 +32,7 @@ public class SettingPanel : MonoBehaviour
     //打开界面
     public void OnEnter()
     {
+        UIMana.Instance.currentState = UIState.Setting;
         //慢慢显示，并开启点击
         transform.GetComponent<CanvasGroup>().DOFade(1f, 1f)
         .OnComplete(() =>

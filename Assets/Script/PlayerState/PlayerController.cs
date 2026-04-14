@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,9 +8,6 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerController : MonoBehaviour
 {
-
-    //人物属性
-    public Player player = new Player();
 
     //人物朝向
     public Vector2 direction = Vector2.left;
@@ -36,6 +34,9 @@ public class PlayerController : MonoBehaviour
     //冲刺特效
     public GameObject dashEffect;
 
+    //无敌时间
+    private bool isInvincible = false;
+    public float invincibleTime = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -93,12 +94,12 @@ public class PlayerController : MonoBehaviour
     //移动
     public void Move(float dir)
     {
-        rb.velocity = new Vector2(dir * player.playerSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(dir * GameDateMana.Instance.currentPlayer.playerSpeed, rb.velocity.y);
     }
     //跳跃
     public void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, player.playerJumpHeight);
+        rb.velocity = new Vector2(rb.velocity.x, GameDateMana.Instance.currentPlayer.playerJumpHeight);
     }
     //是否在地面
     private void OnCollisionEnter2D(Collision2D collision)
@@ -119,7 +120,7 @@ public class PlayerController : MonoBehaviour
     public void Attack()
     {
        
-        float distance = player.playerRange;
+        float distance = GameDateMana.Instance.currentPlayer.playerRange;
 
         Vector2 origin = (Vector2)transform.position + direction * distance * 0.5f;
 
@@ -132,13 +133,12 @@ public class PlayerController : MonoBehaviour
 
         foreach (var hit in hits)
         {
-            Debug.Log("打到敌人: " + hit.name);
-            hit.GetComponent<MonsterController>().BeAttacked(this);
+            hit.GetComponent<MonsterController>()?.BeAttacked(this);
         }
     }
     public void AttackDown()
     {
-        float range = player.playerRange;
+        float range = GameDateMana.Instance.currentPlayer.playerRange;
 
         Vector2 center = (Vector2)transform.position + Vector2.down * range * 0.5f;
 
@@ -152,12 +152,12 @@ public class PlayerController : MonoBehaviour
         foreach (var hit in hits)
         {
             Debug.Log("下劈命中: " + hit.name);
-            hit.GetComponent<MonsterController>().BeAttacked(this);
+            hit.GetComponent<MonsterController>()?.BeAttacked(this);
         }
     }
     public void AttackUp()
     {
-        float range = player.playerRange;
+        float range = GameDateMana.Instance.currentPlayer.playerRange;
 
         Vector2 center = (Vector2)transform.position + Vector2.up * range * 0.5f;
 
@@ -171,15 +171,34 @@ public class PlayerController : MonoBehaviour
         foreach (var hit in hits)
         {
             Debug.Log("上劈命中: " + hit.name);
-            hit.GetComponent<MonsterController>().BeAttacked(this);
+            hit.GetComponent<MonsterController>()?.BeAttacked(this);
         }
     }
     /// <summary>
     /// 被攻击
     /// </summary>
-    public void BeAttack()
+    public void BeAttack(Transform monster)
     {
-        player.playerHp -= 1;
+        if (isInvincible) return;
+        GameDateMana.Instance.currentPlayer.TakeDamage();
+      
+        ChangeState(new HitState());
+        BeRetreat(monster);
+    }
+    //被击退
+    public void BeRetreat(Transform monster)
+    {
+        float dir = Mathf.Sign(transform.position.x - monster.position.x);
+        rb.velocity = new Vector2(dir * 5f, 2f);
+
+        StartCoroutine(InvincibleCoroutine());
+    }
+    //无敌时间
+    IEnumerator InvincibleCoroutine()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(invincibleTime);
+        isInvincible = false;
     }
 
     //攻击特效帧事件
