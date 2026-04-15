@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GameDateMana
 {
+    public Transform playerTransform;   
+
     public static GameDateMana Instance = new GameDateMana();
 
     public Player player;   // 当前存档人物数据
@@ -26,6 +28,11 @@ public class GameDateMana
     // 保存游戏
     public void Save()
     {
+        // 记录位置
+        currentPlayer.posx = playerTransform.position.x;
+        currentPlayer.posy = playerTransform.position.y;
+        currentPlayer.posz = playerTransform.position.z;
+
         player = ClonePlayer(currentPlayer);
         FileSaveAndLoad.Instance.SavePlayer(currentSlot, player);
     }

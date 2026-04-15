@@ -1,1 +1,1 @@
-{"maxHp":5,"currentHp":5,"playerSpeed":4.0,"playerJumpHeight":6.0,"playerAttack":20.0,"playerRange":2.0,"OnMaxHpChanged":null,"OnHpChanged":null}
+{"maxHp":5,"currentHp":5,"playerSpeed":4.0,"playerJumpHeight":6.0,"playerAttack":20.0,"playerRange":2.0,"posx":0.0,"posy":0.0,"posz":0.0,"OnMaxHpChanged":null,"OnHpChanged":null,"OnDeath":null}

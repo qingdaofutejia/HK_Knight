@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,10 +15,18 @@ public class Player
     public float playerAttack;
     public float playerRange;
 
+    //玩家存档位置
+    public float posx;
+    public float posy;
+    public float posz;
+
     //最大血量变化事件
     public Action<int,int> OnMaxHpChanged;
     //血量变化事件
     public Action<int,int> OnHpChanged;
+
+    //死亡事件
+    public Action OnDeath;
 
     public Player()
     {
@@ -27,6 +36,10 @@ public class Player
         playerJumpHeight = 6f;
         playerAttack = 20f;
         playerRange = 2f;
+        posx = 0f;
+        posy = 0f;
+        posz = 0f;
+
     }
 
     // 增加最大血量
@@ -39,11 +52,13 @@ public class Player
     }
     //扣血
     public void TakeDamage()
-    {
-        Debug.Log("掉血对象：" + this);
+    {   
         currentHp -= 1;
-        if (currentHp < 0)
-            currentHp = 0;
+        if (currentHp <=0)
+        {
+            OnDeath?.Invoke();
+        }
+            
 
         OnHpChanged?.Invoke(maxHp,currentHp);
     }

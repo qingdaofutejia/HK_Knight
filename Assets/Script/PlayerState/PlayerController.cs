@@ -1,10 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerController : MonoBehaviour
 {
@@ -41,6 +41,13 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        GameDateMana.Instance.playerTransform = this.transform;
+
+        //监听死亡事件
+        GameDateMana.Instance.currentPlayer.OnDeath += OnPlayerDead;
+
+        transform.position = new Vector3(GameDateMana.Instance.currentPlayer.posx, GameDateMana.Instance.currentPlayer.posy, GameDateMana.Instance.currentPlayer.posz);
         attackEffectUp = Resources.Load<GameObject>("Eff/Attack_Up");
         attackEffectDown = Resources.Load<GameObject>("Eff/Attack_Down");
         attackEffect = Resources.Load<GameObject>("Eff/Attack");
@@ -58,6 +65,23 @@ public class PlayerController : MonoBehaviour
         }
         //初始为待机动画
         ChangeState(new IdleState());
+    }
+
+    //玩家死亡事件
+    private void OnPlayerDead()
+    {
+        //切换死亡动画
+        ChangeState(new DeathState());
+        DeathPanel.Instance.Play(OnBlackFull);
+    }
+
+    private void OnBlackFull()
+    {
+        // 复活位置
+        transform.position = new Vector3(GameDateMana.Instance.currentPlayer.posx, GameDateMana.Instance.currentPlayer.posy, GameDateMana.Instance.currentPlayer.posz);
+        GameDateMana.Instance.currentPlayer.currentHp = GameDateMana.Instance.currentPlayer.maxHp;
+        //血量恢复UI
+        GameDateMana.Instance.currentPlayer.OnHpChanged?.Invoke(GameDateMana.Instance.currentPlayer.maxHp, GameDateMana.Instance.currentPlayer.currentHp);
     }
 
     // Update is called once per frame
@@ -151,7 +175,6 @@ public class PlayerController : MonoBehaviour
 
         foreach (var hit in hits)
         {
-            Debug.Log("下劈命中: " + hit.name);
             hit.GetComponent<MonsterController>()?.BeAttacked(this);
         }
     }
@@ -181,7 +204,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isInvincible) return;
         GameDateMana.Instance.currentPlayer.TakeDamage();
-      
+        if (GameDateMana.Instance.currentPlayer.currentHp <= 0) return;
         ChangeState(new HitState());
         BeRetreat(monster);
     }
