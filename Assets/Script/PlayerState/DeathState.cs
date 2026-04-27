@@ -8,7 +8,7 @@ public class DeathState : PlayerStateBase
     public override void Enter(PlayerController player)
     {
         timer = 0;
-       player.animator.SetTrigger("Death");
+        player.NetSetTrigger("Death");
     }
 
     public override void Exit(PlayerController player)

@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Asynchronous.unity
     guid: a4c5524f9fb437640b29701011a5ee6f
   - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: 2073263c5adec7a49b0393bbfa07a1a1
+  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: c3e34cafaf8467e4dad4162a0c008f95
   m_configObjects: {}

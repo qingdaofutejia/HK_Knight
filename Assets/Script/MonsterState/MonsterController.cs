@@ -1,9 +1,8 @@
+using Photon.Pun;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
-public class MonsterController : MonoBehaviour
+public class MonsterController : MonoBehaviourPun
 {
     //怪物受击动画
     GameObject hitEffect;
@@ -55,6 +54,8 @@ public class MonsterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
         currentState?.Update(this);
     }
     public void ChangeState(MonsterStateBase newState)
@@ -97,27 +98,69 @@ public class MonsterController : MonoBehaviour
     //被攻击
     public void BeAttacked(PlayerController player)
     {
-        GameObject eff=Instantiate(hitEffect, transform.position, Quaternion.identity);
-        StartCoroutine(DestroyEff(0.2f,eff));
+        if (player == null) return;
 
-        monster.monster_HP-=GameDateMana.Instance.currentPlayer.playerAttack;
-        StartCoroutine(HitFlash());
-        BeRetreat(player.direction);
-        if(monster.monster_HP<=0)
+        float damage = GameDateMana.Instance.currentPlayer.playerAttack;
+        Vector2 hitDir = player.direction;
+
+        photonView.RPC(nameof(RPC_TakeDamage), RpcTarget.MasterClient, damage, hitDir.x, hitDir.y);
+    }
+    [PunRPC]
+    void RPC_TakeDamage(float damage, float dirX, float dirY)
+    {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+
+        if (IsDeath)
+            return;
+
+        monster.monster_HP -= damage;
+
+        photonView.RPC(nameof(RPC_PlayHitEffect), RpcTarget.All);
+        photonView.RPC(nameof(RPC_BeRetreat), RpcTarget.All, dirX, dirY);
+
+        if (monster.monster_HP <= 0)
         {
-            ChangeState(new MonsterDeathState());
+            IsDeath = true;
+            photonView.RPC(nameof(RPC_Die), RpcTarget.All);
         }
     }
+
+    [PunRPC]
+    void RPC_PlayHitEffect()
+    {
+        if (hitEffect != null)
+        {
+            GameObject eff = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            StartCoroutine(DestroyEff(0.2f, eff));
+        }
+
+        StartCoroutine(HitFlash());
+    }
+
+    [PunRPC]
+    void RPC_BeRetreat(float dirX, float dirY)
+    {
+        if (rb != null)
+        {
+            rb.velocity = new Vector2(dirX * 5f, 2f);
+        }
+    }
+
+    [PunRPC]
+    void RPC_Die()
+    {
+        if (IsDeath == false)
+            IsDeath = true;
+
+        ChangeState(new MonsterDeathState());
+        StartCoroutine(DestroyObject(0.5f));
+    }
+
     //被击退
     public void BeRetreat(Vector2 vec)
     {
         rb.velocity = new Vector2(vec.x * 5f, 2f);
-    }
-
-    //怪物死亡销毁
-    public void Die()
-    {
-        StartCoroutine(DestroyObject(0.5f));
     }
     IEnumerator DestroyObject(float timer)
     {
@@ -140,5 +183,21 @@ public class MonsterController : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         sr.color = Color.white;
+    }
+
+    [PunRPC]
+    void RPC_SetMonsterBool(string paramName, bool value)
+    {
+        if (animator != null)
+            animator.SetBool(paramName, value);
+    }
+
+    public void NetSetMonsterBool(string paramName, bool value)
+    {
+        if (animator != null)
+            animator.SetBool(paramName, value);
+
+        if (PhotonNetwork.IsMasterClient)
+            photonView.RPC(nameof(RPC_SetMonsterBool), RpcTarget.Others, paramName, value);
     }
 }

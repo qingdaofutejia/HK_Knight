@@ -7,7 +7,7 @@ public class HitState : PlayerStateBase
     private float timer;
     public override void Enter(PlayerController player)
     {
-        player.animator.SetTrigger("Hit");
+        player.NetSetTrigger("Hit");
     }
 
     public override void Exit(PlayerController player)

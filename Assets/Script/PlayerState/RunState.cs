@@ -7,7 +7,7 @@ public class RunState : PlayerStateBase
 {
     public override void Enter(PlayerController player)
     {
-        player.animator.SetFloat("Speed", 1f);
+        player.NetSetFloat("Speed", 1f);
     }
 
     public override void Exit(PlayerController player)
@@ -18,7 +18,7 @@ public class RunState : PlayerStateBase
     {
         //移动
         float h = Input.GetAxis("Horizontal");
-        player.animator.SetFloat("Speed", Mathf.Abs(h));
+        player.NetSetFloat("Speed", Mathf.Abs(h));
         //向右移动，人物转向
         if (h>=0.1f)
         {

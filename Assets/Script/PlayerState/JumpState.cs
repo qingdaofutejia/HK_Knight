@@ -8,9 +8,9 @@ public class JumpState : PlayerStateBase
     private bool Isgrounded;
     public override void Enter(PlayerController player)
     {
-        player.animator.SetTrigger("Jump");
+        player.NetSetTrigger("Jump");
         player.Jump();
-        Isgrounded=false;
+        Isgrounded = false;
     }
 
     public override void Exit(PlayerController player)

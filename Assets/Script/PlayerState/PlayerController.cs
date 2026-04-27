@@ -1,14 +1,10 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerController : MonoBehaviour
 {
-
+    private PhotonView pv;
     //人物朝向
     public Vector2 direction = Vector2.left;
 
@@ -41,28 +37,49 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        GameDateMana.Instance.playerTransform = this.transform;
-
-        //监听死亡事件
-        GameDateMana.Instance.currentPlayer.OnDeath += OnPlayerDead;
-
-        transform.position = new Vector3(GameDateMana.Instance.currentPlayer.posx, GameDateMana.Instance.currentPlayer.posy, GameDateMana.Instance.currentPlayer.posz);
-        attackEffectUp = Resources.Load<GameObject>("Eff/Attack_Up");
-        attackEffectDown = Resources.Load<GameObject>("Eff/Attack_Down");
-        attackEffect = Resources.Load<GameObject>("Eff/Attack");
-        dashEffect= Resources.Load<GameObject>("Eff/DashEff");
+        pv = GetComponent<PhotonView>();
 
         animator = this.GetComponent<Animator>();
-        if(animator == null)
+        if (animator == null)
         {
             Debug.Log("没有找到Animator组件");
         }
-        rb=this.GetComponent<Rigidbody2D>();
-        if(rb == null)
+
+        rb = this.GetComponent<Rigidbody2D>();
+        if (rb == null)
         {
             Debug.Log("没有找到Rigidbody2D组件");
         }
+
+        attackEffectUp = Resources.Load<GameObject>("Eff/Attack_Up");
+        attackEffectDown = Resources.Load<GameObject>("Eff/Attack_Down");
+        attackEffect = Resources.Load<GameObject>("Eff/Attack");
+        dashEffect = Resources.Load<GameObject>("Eff/DashEff");
+
+        // 远端玩家：不执行本地存档
+        if (pv != null && !pv.IsMine)
+        {
+            ChangeState(new IdleState());
+            return;
+        }
+
+        GameDateMana.Instance.playerTransform = this.transform;
+
+        GameDateMana.Instance.currentPlayer.OnDeath += OnPlayerDead;
+
+        // 每次进入游戏时，当前血量重置为最大血量
+        GameDateMana.Instance.currentPlayer.currentHp = GameDateMana.Instance.currentPlayer.maxHp;
+        GameDateMana.Instance.currentPlayer.OnHpChanged?.Invoke(
+            GameDateMana.Instance.currentPlayer.maxHp,
+            GameDateMana.Instance.currentPlayer.currentHp
+        );
+
+
+        transform.position = new Vector3(
+            GameDateMana.Instance.currentPlayer.posx,
+            GameDateMana.Instance.currentPlayer.posy,
+            GameDateMana.Instance.currentPlayer.posz
+        );
         //初始为待机动画
         ChangeState(new IdleState());
     }
@@ -87,6 +104,23 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (pv != null && !pv.IsMine)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            Setting_sPanel panel = FindObjectOfType<Setting_sPanel>();
+            if (panel == null)
+            {
+                Debug.Log("找不到");
+                return;
+            }
+            if (panel.IsOpen())
+                panel.OnExit();
+            else
+                panel.OnEnter();
+        }
+
         currentState?.Update(this);
         CheckDirection();
     }
@@ -198,20 +232,41 @@ public class PlayerController : MonoBehaviour
         }
     }
     /// <summary>
-    /// 被攻击
+    /// 给 Photon RPC 调用：由房主通知“这个玩家被怪打到了”
     /// </summary>
+    [PunRPC]
+    public void RPC_BeAttack(float monsterX)
+    {
+        Vector3 monsterPos = new Vector3(monsterX, transform.position.y, transform.position.z);
+        BeAttackByPosition(monsterPos);
+    }
+
     public void BeAttack(Transform monster)
     {
+        if (monster == null) return;
+        BeAttackByPosition(monster.position);
+    }
+
+    /// <summary>
+    /// 按怪物位置处理受击
+    /// </summary>
+    public void BeAttackByPosition(Vector3 monsterPos)
+    {
         if (isInvincible) return;
+
         GameDateMana.Instance.currentPlayer.TakeDamage();
         if (GameDateMana.Instance.currentPlayer.currentHp <= 0) return;
+
         ChangeState(new HitState());
-        BeRetreat(monster);
+        BeRetreatByPosition(monsterPos);
     }
-    //被击退
-    public void BeRetreat(Transform monster)
+
+    /// <summary>
+    /// 按怪物位置击退
+    /// </summary>
+    public void BeRetreatByPosition(Vector3 monsterPos)
     {
-        float dir = Mathf.Sign(transform.position.x - monster.position.x);
+        float dir = Mathf.Sign(transform.position.x - monsterPos.x);
         rb.velocity = new Vector2(dir * 5f, 2f);
 
         StartCoroutine(InvincibleCoroutine());
@@ -281,5 +336,51 @@ public class PlayerController : MonoBehaviour
         Destroy(effect);
     }
 
+    [PunRPC]
+    void RPC_SetAnimTrigger(string triggerName)
+    {
+        if (animator != null)
+            animator.SetTrigger(triggerName);
+    }
 
+    [PunRPC]
+    void RPC_SetAnimFloat(string paramName, float value)
+    {
+        if (animator != null)
+            animator.SetFloat(paramName, value);
+    }
+
+    [PunRPC]
+    void RPC_PlayAnim(string stateName)
+    {
+        if (animator != null)
+            animator.Play(stateName);
+    }
+
+    public void NetSetTrigger(string triggerName)
+    {
+        if (animator != null)
+            animator.SetTrigger(triggerName);
+
+        if (pv != null && pv.IsMine)
+            pv.RPC(nameof(RPC_SetAnimTrigger), RpcTarget.Others, triggerName);
+    }
+
+    public void NetSetFloat(string paramName, float value)
+    {
+        if (animator != null)
+            animator.SetFloat(paramName, value);
+
+        if (pv != null && pv.IsMine)
+            pv.RPC(nameof(RPC_SetAnimFloat), RpcTarget.Others, paramName, value);
+    }
+
+    public void NetPlay(string stateName)
+    {
+        if (animator != null)
+            animator.Play(stateName);
+
+        if (pv != null && pv.IsMine)
+            pv.RPC(nameof(RPC_PlayAnim), RpcTarget.Others, stateName);
+    }
 }

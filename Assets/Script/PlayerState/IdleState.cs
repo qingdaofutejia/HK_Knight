@@ -6,8 +6,8 @@ public class IdleState : PlayerStateBase
 {
     public override void Enter(PlayerController player)
     {
-        player.animator.SetFloat("Speed", 0f);
-        player.animator.Play("Idle");
+        player.NetSetFloat("Speed", 0f);
+        player.NetPlay("Idle");
     }
 
     public override void Exit(PlayerController player)

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Realtime;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,15 +14,6 @@ public class CameraFllow : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
-    private void Awake()
-    {
-        if (target == null)
-        {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-                target = player.transform;
-        }
-    }
 
     void LateUpdate()
     {
@@ -32,7 +24,7 @@ public class CameraFllow : MonoBehaviour
         //X轴始终跟随
         targetPosition.x = target.position.x + offset.x;
 
-        // Y轴：只有超过范围才移动（核心！）
+        //超过范围才移动
         float deltaY = target.position.y - transform.position.y;
 
         if (Mathf.Abs(deltaY) > yDeadZone)
@@ -50,5 +42,20 @@ public class CameraFllow : MonoBehaviour
             ref velocity,
             smoothTime
         );
+    }
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
+        SnapToTarget();
+    }
+    private void SnapToTarget( )
+    {
+        if (target == null) return;
+
+        Vector3 pos = transform.position;
+        pos.x = target.position.x + offset.x;
+        pos.y = target.position.y + offset.y;
+        // z 保持相机原来的值
+        transform.position = pos;
     }
 }

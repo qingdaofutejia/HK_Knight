@@ -26,7 +26,7 @@ public class ChoicePanel : MonoBehaviour
         transform.GetComponent<CanvasGroup>().blocksRaycasts = false;
         transform.GetComponent<CanvasGroup>().interactable = false;
 
-        for(int i=1;i<=4;i++)
+        for (int i=1;i<=4;i++)
         {
             int index = i;
             slots[i-1] = transform.Find("List/Archive" + i).GetComponent<Archive>();
@@ -43,8 +43,7 @@ public class ChoicePanel : MonoBehaviour
         {
             GameDateMana.Instance.Load(slot);
 
-            //进入异步加载，进入游戏
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
         //如果没有存档，创建存档
         else

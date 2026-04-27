@@ -17,7 +17,7 @@ public class AttackState : PlayerStateBase
         // ÏòÉÏ¹¥»÷
         if (v > 0.5f)
         {
-            player.animator.SetTrigger("Attack_Up");
+            player.NetSetTrigger("Attack_Up");
             // ÉÔÎ¢¼õÂıÏÂÂä
             player.rb.velocity = Vector2.zero;
             player.AttackUp();
@@ -25,7 +25,7 @@ public class AttackState : PlayerStateBase
         // ÏòÏÂ¹¥»÷
         else if (v < -0.5f)
         {
-            player.animator.SetTrigger("Attack_Down");
+            player.NetSetTrigger("Attack_Down");
             // ÉÔÎ¢¼õÂıÏÂÂä
             player.rb.velocity = Vector2.zero;
             player.AttackDown();
@@ -35,12 +35,12 @@ public class AttackState : PlayerStateBase
             //³¯ÓÒ
             if (player.transform.localScale.x < 0)
             {
-                player.animator.SetTrigger("Attack_Right");
+                player.NetSetTrigger("Attack_Right");
             }
             //³¯×ó
             else
             {
-                player.animator.SetTrigger("Attack_Left");
+                player.NetSetTrigger("Attack_Left");
             }
             player.Attack();
         }

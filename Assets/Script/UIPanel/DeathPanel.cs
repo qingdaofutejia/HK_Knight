@@ -24,7 +24,7 @@ public class DeathPanel : MonoBehaviour
     IEnumerator DeathCoroutine(System.Action onBlackFull)
     {
         //等待播放死亡动画
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.5f);
         // 收缩（四周→中间）
         yield return Scale(Vector3.zero, Vector3.one);
 

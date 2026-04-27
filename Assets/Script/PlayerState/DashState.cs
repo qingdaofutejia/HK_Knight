@@ -13,11 +13,8 @@ public class DashState : PlayerStateBase
     public override void Enter(PlayerController player)
     {
         timer = 0;
-
-        player.animator.SetTrigger("Dash");
-
+        player.NetSetTrigger("Dash");
         dashDir = player.direction;
-        //禁用Y轴
         dashDir.y = 0f;
     }
 

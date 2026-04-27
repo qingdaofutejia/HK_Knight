@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Asynchronous : MonoBehaviour
 {
-
+    public static int nextScene;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,7 @@ public class Asynchronous : MonoBehaviour
     IEnumerator LoadSceneAsync()
     {
         // ¿ªÊ¼¼ÓÔØ
-        AsyncOperation op = SceneManager.LoadSceneAsync(2);
+        AsyncOperation op = SceneManager.LoadSceneAsync(nextScene);
         op.allowSceneActivation = false;
 
         float timer = 0f;

@@ -6,7 +6,7 @@ public class MonsterMoveState : MonsterStateBase
 {
     public override void Enter(MonsterController monster)
     {
-        monster.animator.SetBool("Isdeath", false);
+        monster.NetSetMonsterBool("Isdeath", false);
     }
 
     public override void Exit(MonsterController monster)

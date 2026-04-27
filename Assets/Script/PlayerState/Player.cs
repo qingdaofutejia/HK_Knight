@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,11 +21,13 @@ public class Player
     public float posy;
     public float posz;
 
+    [JsonIgnore]
     //最大血量变化事件
     public Action<int,int> OnMaxHpChanged;
+    [JsonIgnore]
     //血量变化事件
     public Action<int,int> OnHpChanged;
-
+    [JsonIgnore]
     //死亡事件
     public Action OnDeath;
 
@@ -61,6 +64,13 @@ public class Player
             
 
         OnHpChanged?.Invoke(maxHp,currentHp);
+    }
+    //存档
+    public void SavePos(Transform transform)
+    {
+        posx = transform.position.x;
+        posy = transform.position.y;
+        posz = transform.position.z;
     }
 }
 
