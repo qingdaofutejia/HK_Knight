@@ -1,11 +1,11 @@
 {
   "maxHp": 5,
-  "currentHp": 2,
+  "currentHp": 4,
   "playerSpeed": 4.0,
   "playerJumpHeight": 6.0,
   "playerAttack": 20.0,
   "playerRange": 2.0,
-  "posx": -0.572639167,
-  "posy": -0.0400001034,
+  "posx": 109.278572,
+  "posy": -24.0400047,
   "posz": 0.0
 }

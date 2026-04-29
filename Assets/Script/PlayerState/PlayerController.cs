@@ -191,7 +191,10 @@ public class PlayerController : MonoBehaviour
 
         foreach (var hit in hits)
         {
+            //普通怪物
             hit.GetComponent<MonsterController>()?.BeAttacked(this);
+            //boss
+            hit.GetComponent<BossController>()?.BeAttacked(this);
         }
     }
     public void AttackDown()
@@ -209,7 +212,10 @@ public class PlayerController : MonoBehaviour
 
         foreach (var hit in hits)
         {
+            //普通怪物
             hit.GetComponent<MonsterController>()?.BeAttacked(this);
+            //boss
+            hit.GetComponent<BossController>()?.BeAttacked(this);
         }
     }
     public void AttackUp()
@@ -228,12 +234,12 @@ public class PlayerController : MonoBehaviour
         foreach (var hit in hits)
         {
             Debug.Log("上劈命中: " + hit.name);
+            //普通怪物
             hit.GetComponent<MonsterController>()?.BeAttacked(this);
+            //boss
+            hit.GetComponent<BossController>()?.BeAttacked(this);
         }
     }
-    /// <summary>
-    /// 给 Photon RPC 调用：由房主通知“这个玩家被怪打到了”
-    /// </summary>
     [PunRPC]
     public void RPC_BeAttack(float monsterX)
     {

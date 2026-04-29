@@ -61,16 +61,22 @@ public class LobbyPanel : MonoBehaviourPunCallbacks
                 yield return null;
         }
 
-        PhotonNetwork.OfflineMode = false;
+        PhotonNetwork.OfflineMode = true;
 
-        // 单机直接进入异步加载场景，不创建房间，不显示房间UI
-        Asynchronous.nextScene = 3;
-        SceneManager.LoadScene(1);
+        PhotonNetwork.CreateRoom("OfflineRoom");
     }
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("成功进入房间");
+        if (PhotonNetwork.OfflineMode)
+        {
+            // 单机直接进入异步加载场景
+            Asynchronous.nextScene = 3;
+            SceneManager.LoadScene(1);
+            return;
+        }
+
+        // 联机房间 UI
         listUI.SetActive(false);
         roomUI.SetActive(true);
 

@@ -96,12 +96,12 @@ TextureImporter:
       name: FailedChampionP1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 7110
-        width: 621
-        height: 418
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 6
+        y: 7117
+        width: 608
+        height: 379
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -117,12 +117,12 @@ TextureImporter:
       name: FailedChampionP1_1
       rect:
         serializedVersion: 2
-        x: 638
-        y: 7118
-        width: 603
-        height: 397
+        x: 637
+        y: 7128
+        width: 594
+        height: 371
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -138,12 +138,12 @@ TextureImporter:
       name: FailedChampionP1_2
       rect:
         serializedVersion: 2
-        x: 1252
+        x: 1259
         y: 7125
-        width: 609
-        height: 386
+        width: 589
+        height: 381
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -159,12 +159,12 @@ TextureImporter:
       name: FailedChampionP1_3
       rect:
         serializedVersion: 2
-        x: 1870
-        y: 7114
-        width: 624
-        height: 401
+        x: 1886
+        y: 7128
+        width: 599
+        height: 376
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -180,12 +180,12 @@ TextureImporter:
       name: FailedChampionP1_4
       rect:
         serializedVersion: 2
-        x: 2501
-        y: 7114
-        width: 624
-        height: 403
+        x: 2513
+        y: 7126
+        width: 595
+        height: 376
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -204,9 +204,9 @@ TextureImporter:
         x: 3
         y: 6699
         width: 535
-        height: 407
+        height: 388
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -227,7 +227,7 @@ TextureImporter:
         width: 544
         height: 386
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -243,12 +243,12 @@ TextureImporter:
       name: FailedChampionP1_7
       rect:
         serializedVersion: 2
-        x: 9
+        x: 19
         y: 6310
-        width: 566
-        height: 373
+        width: 543
+        height: 355
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -264,12 +264,12 @@ TextureImporter:
       name: FailedChampionP1_8
       rect:
         serializedVersion: 2
-        x: 581
+        x: 599
         y: 6310
-        width: 569
-        height: 367
+        width: 540
+        height: 360
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -285,12 +285,12 @@ TextureImporter:
       name: FailedChampionP1_9
       rect:
         serializedVersion: 2
-        x: 6
-        y: 5794
-        width: 597
-        height: 488
+        x: 17
+        y: 5796
+        width: 590
+        height: 470
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -306,12 +306,12 @@ TextureImporter:
       name: FailedChampionP1_10
       rect:
         serializedVersion: 2
-        x: 631
-        y: 5794
-        width: 606
-        height: 476
+        x: 645
+        y: 5797
+        width: 590
+        height: 470
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -327,12 +327,12 @@ TextureImporter:
       name: FailedChampionP1_11
       rect:
         serializedVersion: 2
-        x: 1252
-        y: 5788
-        width: 627
-        height: 490
+        x: 1263
+        y: 5791
+        width: 590
+        height: 470
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -348,12 +348,12 @@ TextureImporter:
       name: FailedChampionP1_12
       rect:
         serializedVersion: 2
-        x: 1883
-        y: 5786
-        width: 620
-        height: 492
+        x: 1900
+        y: 5792
+        width: 590
+        height: 470
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -369,12 +369,12 @@ TextureImporter:
       name: FailedChampionP1_13
       rect:
         serializedVersion: 2
-        x: 2510
-        y: 5786
-        width: 621
-        height: 490
+        x: 2525
+        y: 5797
+        width: 590
+        height: 470
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -390,12 +390,12 @@ TextureImporter:
       name: FailedChampionP1_14
       rect:
         serializedVersion: 2
-        x: 4
-        y: 5385
-        width: 605
-        height: 377
+        x: 20
+        y: 5394
+        width: 580
+        height: 350
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -411,12 +411,12 @@ TextureImporter:
       name: FailedChampionP1_15
       rect:
         serializedVersion: 2
-        x: 614
-        y: 5385
-        width: 607
-        height: 377
+        x: 640
+        y: 5396
+        width: 580
+        height: 350
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -432,12 +432,12 @@ TextureImporter:
       name: FailedChampionP1_16
       rect:
         serializedVersion: 2
-        x: 1228
-        y: 5388
-        width: 603
-        height: 372
+        x: 1247
+        y: 5397
+        width: 580
+        height: 350
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -453,12 +453,12 @@ TextureImporter:
       name: FailedChampionP1_17
       rect:
         serializedVersion: 2
-        x: 4
-        y: 5025
-        width: 605
-        height: 329
+        x: 14
+        y: 5031
+        width: 580
+        height: 310
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -474,12 +474,12 @@ TextureImporter:
       name: FailedChampionP1_18
       rect:
         serializedVersion: 2
-        x: 616
-        y: 5020
-        width: 590
-        height: 339
+        x: 626
+        y: 5030
+        width: 580
+        height: 310
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -495,12 +495,12 @@ TextureImporter:
       name: FailedChampionP1_19
       rect:
         serializedVersion: 2
-        x: 1218
-        y: 5020
-        width: 605
-        height: 344
+        x: 1228
+        y: 5028
+        width: 580
+        height: 310
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -516,12 +516,12 @@ TextureImporter:
       name: FailedChampionP1_20
       rect:
         serializedVersion: 2
-        x: 1831
-        y: 5028
-        width: 597
-        height: 333
+        x: 1833
+        y: 5032
+        width: 580
+        height: 310
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -537,12 +537,12 @@ TextureImporter:
       name: FailedChampionP1_21
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4615
-        width: 609
-        height: 391
+        x: 20
+        y: 4628
+        width: 580
+        height: 350
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -558,12 +558,12 @@ TextureImporter:
       name: FailedChampionP1_22
       rect:
         serializedVersion: 2
-        x: 614
-        y: 4617
-        width: 609
-        height: 382
+        x: 630
+        y: 4622
+        width: 580
+        height: 350
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -579,12 +579,12 @@ TextureImporter:
       name: FailedChampionP1_23
       rect:
         serializedVersion: 2
-        x: 1226
-        y: 4612
-        width: 609
-        height: 387
+        x: 1247
+        y: 4622
+        width: 580
+        height: 350
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -605,7 +605,7 @@ TextureImporter:
         width: 571
         height: 399
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -626,7 +626,7 @@ TextureImporter:
         width: 583
         height: 399
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -642,12 +642,12 @@ TextureImporter:
       name: FailedChampionP1_26
       rect:
         serializedVersion: 2
-        x: 1173
-        y: 4190
-        width: 590
-        height: 406
+        x: 1197
+        y: 4197
+        width: 548
+        height: 384
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -668,7 +668,7 @@ TextureImporter:
         width: 564
         height: 408
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -689,7 +689,7 @@ TextureImporter:
         width: 573
         height: 401
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -705,12 +705,12 @@ TextureImporter:
       name: FailedChampionP1_29
       rect:
         serializedVersion: 2
-        x: 0
-        y: 3789
-        width: 592
-        height: 394
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 16
+        y: 3803
+        width: 552
+        height: 366
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -726,12 +726,12 @@ TextureImporter:
       name: FailedChampionP1_30
       rect:
         serializedVersion: 2
-        x: 4
-        y: 3170
-        width: 710
-        height: 600
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 17
+        y: 3190
+        width: 676
+        height: 560
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -747,12 +747,12 @@ TextureImporter:
       name: FailedChampionP1_31
       rect:
         serializedVersion: 2
-        x: 719
-        y: 3175
-        width: 701
-        height: 590
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 738
+        y: 3190
+        width: 661
+        height: 558
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -770,10 +770,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1425
         y: 3177
-        width: 698
-        height: 583
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 683
+        height: 565
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -789,12 +789,12 @@ TextureImporter:
       name: FailedChampionP1_33
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2565
-        width: 664
-        height: 581
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 17
+        y: 2583
+        width: 635
+        height: 542
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -810,12 +810,12 @@ TextureImporter:
       name: FailedChampionP1_34
       rect:
         serializedVersion: 2
-        x: 671
-        y: 2563
-        width: 641
-        height: 585
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 682
+        y: 2581
+        width: 618
+        height: 529
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -831,12 +831,12 @@ TextureImporter:
       name: FailedChampionP1_35
       rect:
         serializedVersion: 2
-        x: 1314
-        y: 2570
-        width: 663
-        height: 573
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1333
+        y: 2576
+        width: 605
+        height: 539
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -852,12 +852,12 @@ TextureImporter:
       name: FailedChampionP1_36
       rect:
         serializedVersion: 2
-        x: 1984
-        y: 2575
-        width: 648
-        height: 571
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2011
+        y: 2581
+        width: 612
+        height: 529
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -873,12 +873,12 @@ TextureImporter:
       name: FailedChampionP1_37
       rect:
         serializedVersion: 2
-        x: 2649
-        y: 2567
-        width: 659
-        height: 574
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2666
+        y: 2581
+        width: 622
+        height: 534
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -899,7 +899,7 @@ TextureImporter:
         width: 712
         height: 417
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -920,7 +920,7 @@ TextureImporter:
         width: 703
         height: 420
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -941,7 +941,7 @@ TextureImporter:
         width: 713
         height: 423
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -962,7 +962,7 @@ TextureImporter:
         width: 715
         height: 425
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -983,7 +983,7 @@ TextureImporter:
         width: 710
         height: 418
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1004,7 +1004,7 @@ TextureImporter:
         width: 837
         height: 627
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1025,7 +1025,7 @@ TextureImporter:
         width: 848
         height: 627
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1046,7 +1046,7 @@ TextureImporter:
         width: 494
         height: 590
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1067,7 +1067,7 @@ TextureImporter:
         width: 487
         height: 583
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1088,7 +1088,7 @@ TextureImporter:
         width: 609
         height: 394
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1109,7 +1109,7 @@ TextureImporter:
         width: 629
         height: 393
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
