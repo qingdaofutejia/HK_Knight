@@ -9,6 +9,7 @@ public class AttackState : PlayerStateBase
 
     public override void Enter(PlayerController player)
     {
+        AudioManager.Instance?.PlayAttackSFX();
         player.isAttack = true;
         timer = 0;
 

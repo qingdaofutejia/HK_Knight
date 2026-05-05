@@ -111,21 +111,6 @@ public class PlayerController : MonoBehaviour
     {
         if (pv != null && !pv.IsMine)
             return;
-
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            Setting_sPanel panel = FindObjectOfType<Setting_sPanel>();
-            if (panel == null)
-            {
-                Debug.Log("找不到");
-                return;
-            }
-            if (panel.IsOpen())
-                panel.OnExit();
-            else
-                panel.OnEnter();
-        }
-
         currentState?.Update(this);
         CheckDirection();
     }

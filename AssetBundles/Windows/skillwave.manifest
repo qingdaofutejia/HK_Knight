@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 2220804893
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 32ae63e5098d035c6d42a91f1c6ba2bd
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f267fd2d8bcb1179236b6179ac5313bc
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 32ae63e5098d035c6d42a91f1c6ba2bd
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/HotUpdateAssets/skill2.png
+Dependencies: []

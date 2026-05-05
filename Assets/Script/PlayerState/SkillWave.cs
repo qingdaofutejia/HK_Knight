@@ -1,11 +1,16 @@
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+using XLua;
 
+[LuaCallCSharp]
 public class SkillWave : MonoBehaviourPun
 {
-    private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+    // Lua 下载 AB 包后，会把新 Sprite 设置到这里
+    public static Sprite HotUpdateSprite;
 
+    private Rigidbody2D rb;
     [SerializeField] private float speed = 8f;
     [SerializeField] private float damage = 50f;
     [SerializeField] private float lifeTime = 3f;
@@ -17,6 +22,13 @@ public class SkillWave : MonoBehaviourPun
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (rb == null)
+            Debug.LogError("PlayerSkillWave 缺少 Rigidbody2D");
+
+        if (spriteRenderer == null)
+            Debug.LogError("PlayerSkillWave 缺少 SpriteRenderer");
     }
 
     public void Init(int dir, LayerMask targetLayer)
@@ -24,6 +36,7 @@ public class SkillWave : MonoBehaviourPun
         direction = dir >= 0 ? 1 : -1;
 
         ApplyDirection();
+        ApplyHotUpdateSprite();
 
         Destroy(gameObject, lifeTime);
     }
@@ -34,13 +47,23 @@ public class SkillWave : MonoBehaviourPun
         direction = dir >= 0 ? 1 : -1;
 
         ApplyDirection();
+        ApplyHotUpdateSprite();
 
-        if (PhotonNetwork.IsMasterClient)
+        if (photonView.IsMine)
         {
             Invoke(nameof(DestroyNetworkObject), lifeTime);
         }
     }
+    private void ApplyHotUpdateSprite()
+    {
+        if (HotUpdateSprite == null)
+            return;
 
+        if (spriteRenderer == null)
+            spriteRenderer = GetComponent<SpriteRenderer>();
+
+        spriteRenderer.sprite = HotUpdateSprite;
+    }
     private void Update()
     {
         if (rb != null)
@@ -103,7 +126,7 @@ public class SkillWave : MonoBehaviourPun
     {
         if (PhotonNetwork.IsConnected && !PhotonNetwork.OfflineMode)
         {
-            if (PhotonNetwork.IsMasterClient)
+            if (photonView.IsMine)
             {
                 PhotonNetwork.Destroy(gameObject);
             }

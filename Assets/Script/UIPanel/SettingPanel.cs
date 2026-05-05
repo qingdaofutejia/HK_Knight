@@ -9,6 +9,9 @@ public class SettingPanel : MonoBehaviour
 {
     public static SettingPanel Instance;
 
+    public Slider bgmSlider;
+    public Slider sfxSlider;
+
     Button exitBtn;
 
     // Start is called before the first frame update
@@ -19,10 +22,36 @@ public class SettingPanel : MonoBehaviour
         transform.GetComponent<CanvasGroup>().blocksRaycasts = false;
         transform.GetComponent<CanvasGroup>().interactable = false;
 
+        float bgmValue = PlayerPrefs.GetFloat("BGMVolume", 1f);
+        float sfxValue = PlayerPrefs.GetFloat("SFXVolume", 1f);
+
+        if (bgmSlider != null)
+        {
+            bgmSlider.value = bgmValue;
+            bgmSlider.onValueChanged.AddListener(OnBGMVolumeChanged);
+        }
+
+        if (sfxSlider != null)
+        {
+            sfxSlider.value = sfxValue;
+            sfxSlider.onValueChanged.AddListener(OnSFXVolumeChanged);
+        }
+
+        AudioManager.Instance?.SetBGMVolume(bgmValue);
+        AudioManager.Instance?.SetSFXVolume(sfxValue);
+
         exitBtn = transform.Find("Return").GetComponent<Button>();
         exitBtn.onClick.AddListener(OnExit);
     }
+    public void OnBGMVolumeChanged(float value)
+    {
+        AudioManager.Instance?.SetBGMVolume(value);
+    }
 
+    public void OnSFXVolumeChanged(float value)
+    {
+        AudioManager.Instance?.SetSFXVolume(value);
+    }
     // Update is called once per frame
     void Update()
     {

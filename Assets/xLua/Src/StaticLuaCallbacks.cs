@@ -577,8 +577,6 @@ namespace XLua
                 {
                     return LuaAPI.luaL_error(L, "#2 param need a System.Type!");
                 }
-                //UnityEngine.Debug.Log("============================load type by __index:" + type);
-                //translator.TryDelayWrapLoader(L, type);
                 translator.GetTypeId(L, type);
                 LuaAPI.lua_pushvalue(L, 2);
                 LuaAPI.lua_rawget(L, 1);
@@ -614,8 +612,8 @@ namespace XLua
 
                 for (int i = 1; i <= n; i++)
                 {
-                    LuaAPI.lua_pushvalue(L, -1);  /* function to be called */
-                    LuaAPI.lua_pushvalue(L, i);   /* value to print */
+                    LuaAPI.lua_pushvalue(L, -1); 
+                    LuaAPI.lua_pushvalue(L, i);  
                     if (0 != LuaAPI.lua_pcall(L, 1, 1, 0))
                     {
                         return LuaAPI.lua_error(L);
