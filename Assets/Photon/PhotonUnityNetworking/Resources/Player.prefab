@@ -179,6 +179,8 @@ MonoBehaviour:
   attackEffectDown: {fileID: 0}
   attackEffect: {fileID: 0}
   dashEffect: {fileID: 0}
+  skillWavePrefab: {fileID: 0}
+  skillWaveSpawnOffsetX: 1.2
   invincibleTime: 1
 --- !u!114 &7131956742288877030
 MonoBehaviour:

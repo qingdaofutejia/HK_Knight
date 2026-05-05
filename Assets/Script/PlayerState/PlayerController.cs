@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour
     //冲刺特效
     public GameObject dashEffect;
 
+    //技能特效
+    public GameObject skillWavePrefab;
+    public float skillWaveSpawnOffsetX = 1.2f;
+
     //无敌时间
     private bool isInvincible = false;
     public float invincibleTime = 1f;
@@ -55,6 +59,7 @@ public class PlayerController : MonoBehaviour
         attackEffectDown = Resources.Load<GameObject>("Eff/Attack_Down");
         attackEffect = Resources.Load<GameObject>("Eff/Attack");
         dashEffect = Resources.Load<GameObject>("Eff/DashEff");
+        skillWavePrefab= Resources.Load<GameObject>("Eff/PlayerSkillWave");
 
         // 远端玩家：不执行本地存档
         if (pv != null && !pv.IsMine)
@@ -388,5 +393,58 @@ public class PlayerController : MonoBehaviour
 
         if (pv != null && pv.IsMine)
             pv.RPC(nameof(RPC_PlayAnim), RpcTarget.Others, stateName);
+    }
+
+    //技能
+    public void ReleaseSkillWave()
+    {
+        int dir = direction == Vector2.right ? 1 : -1;
+
+        Vector3 spawnPos = transform.position + new Vector3(
+            dir * skillWaveSpawnOffsetX,
+            0f,
+            0f
+        );
+
+        if (PhotonNetwork.IsConnected && !PhotonNetwork.OfflineMode)
+        {
+            GameObject waveObj = PhotonNetwork.Instantiate(
+                "Eff/PlayerSkillWave",
+                spawnPos,
+                Quaternion.identity
+            );
+
+            SkillWave wave = waveObj.GetComponent<SkillWave>();
+            if (wave != null)
+            {
+                PhotonView waveView = waveObj.GetComponent<PhotonView>();
+                waveView.RPC(
+                    nameof(SkillWave.RPC_Init),
+                    RpcTarget.AllBuffered,
+                    dir,
+                    LayerMask.GetMask("Enemy")
+                );
+            }
+        }
+        else
+        {
+            if (skillWavePrefab == null)
+            {
+                Debug.LogWarning("没有设置 skillWavePrefab");
+                return;
+            }
+
+            GameObject waveObj = Instantiate(
+                skillWavePrefab,
+                spawnPos,
+                Quaternion.identity
+            );
+
+            SkillWave wave = waveObj.GetComponent<SkillWave>();
+            if (wave != null)
+            {
+                wave.Init(dir, LayerMask.GetMask("Enemy"));
+            }
+        }
     }
 }

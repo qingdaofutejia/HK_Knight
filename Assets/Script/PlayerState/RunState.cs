@@ -49,5 +49,9 @@ public class RunState : PlayerStateBase
         {
             player.ChangeState(new DashState());
         }
+        if (Input.GetKeyDown(KeyCode.I) && !player.isAttack)
+        {
+            player.ReleaseSkillWave();
+        }
     }
 }

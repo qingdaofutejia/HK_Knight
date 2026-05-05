@@ -125,7 +125,42 @@ public class MonsterController : MonoBehaviourPun
             photonView.RPC(nameof(RPC_Die), RpcTarget.All);
         }
     }
+    public void TakeDamage(float damage)
+    {
+        if (PhotonNetwork.IsConnected && !PhotonNetwork.OfflineMode)
+        {
+            photonView.RPC(nameof(RPC_TakeSkillDamage), RpcTarget.MasterClient, damage);
+        }
+        else
+        {
+            TakeSkillDamageInternal(damage);
+        }
+    }
 
+    [PunRPC]
+    private void RPC_TakeSkillDamage(float damage)
+    {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+
+        TakeSkillDamageInternal(damage);
+    }
+
+    private void TakeSkillDamageInternal(float damage)
+    {
+        if (IsDeath)
+            return;
+
+        monster.monster_HP -= damage;
+
+        photonView.RPC(nameof(RPC_PlayHitEffect), RpcTarget.All);
+
+        if (monster.monster_HP <= 0)
+        {
+            IsDeath = true;
+            photonView.RPC(nameof(RPC_Die), RpcTarget.All);
+        }
+    }
     [PunRPC]
     void RPC_PlayHitEffect()
     {

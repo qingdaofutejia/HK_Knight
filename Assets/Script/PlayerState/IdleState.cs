@@ -39,5 +39,10 @@ public class IdleState : PlayerStateBase
         {
             player.ChangeState(new DashState());
         }
+        //¼¼ÄÜ
+        if (Input.GetKeyDown(KeyCode.I) && !player.isAttack)
+        {
+            player.ReleaseSkillWave();
+        }
     }
 }

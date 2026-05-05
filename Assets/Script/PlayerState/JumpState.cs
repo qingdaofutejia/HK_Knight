@@ -44,5 +44,9 @@ public class JumpState : PlayerStateBase
         {
             player.ChangeState(new IdleState());
         }
+        if (Input.GetKeyDown(KeyCode.I) && !player.isAttack)
+        {
+            player.ReleaseSkillWave();
+        }
     }
 }

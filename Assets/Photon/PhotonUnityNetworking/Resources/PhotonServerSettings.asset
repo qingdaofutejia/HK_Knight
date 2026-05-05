@@ -19,7 +19,7 @@ MonoBehaviour:
     AppIdVoice: 
     AppVersion: 1
     UseNameServer: 1
-    FixedRegion: 
+    FixedRegion: cn
     Server: 
     Port: 0
     ProxyServer: 
@@ -51,6 +51,7 @@ MonoBehaviour:
   - RPC_Init
   - RPC_PlayAttackAnimation
   - RPC_PlayIdle
+  - RPC_TakeSkillDamage
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

@@ -91,7 +91,7 @@ public class GroundWave : MonoBehaviourPun
 
         PhotonView playerView = playerObj.GetComponent<PhotonView>();
 
-        // 联机模式：只让被击中的玩家自己执行受击逻辑
+        // 只让被击中的玩家自己执行受击逻辑
         if (PhotonNetwork.IsConnected && !PhotonNetwork.OfflineMode && playerView != null)
         {
             playerView.RPC(
